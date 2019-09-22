@@ -13,31 +13,31 @@ class TodoList extends Component {
     this.handleClick = this.handleClick.bind(this)
     this.handleDel = this.handleDel.bind(this)
   }
-  // 在组件即将挂载前执行
-  UNSAFE_componentWillMount () { // 原叫componentWillMoun
-    console.log('componentWillMount：在组件即将挂载前执行')
-  }
-  // 组件挂载完后执行
-  componentDidMount () {
-    console.log('componentDidMount:组件挂载完后执行')
-  }
-  // 组件更新前执行
-  shouldComponentUpdate () {
-    console.log('shouldComponentUpdate: 组件更新前执行')
-    return true // 是否更新组件（=\=> componentWillUpdate =\=> render）
-  }
-  // shouldComponentUpdate 返回true才执行
-  UNSAFE_componentWillUpdate () {
-    console.log('componentWillUpdate')
-  }
-  // 组件更新后执行
-  componentDidUpdate () {
-    console.log('componentDidUpdate: 组件更新完毕')
-  }
-  // 接收到props执行
-  UNSAFE_componentWillReceiveProps  () {
-    console.log('componentWillReceiveProps:接收到props执行')
-  }
+  // // 在组件即将挂载前执行
+  // UNSAFE_componentWillMount () { // 原叫componentWillMoun
+  //   console.log('componentWillMount：在组件即将挂载前执行')
+  // }
+  // // 组件挂载完后执行
+  // componentDidMount () {
+  //   console.log('componentDidMount:组件挂载完后执行')
+  // }
+  // // 组件更新前执行
+  // shouldComponentUpdate () {
+  //   console.log('shouldComponentUpdate: 组件更新前执行')
+  //   return true // 是否更新组件（=\=> componentWillUpdate =\=> render）
+  // }
+  // // shouldComponentUpdate 返回true才执行
+  // UNSAFE_componentWillUpdate () {
+  //   console.log('componentWillUpdate')
+  // }
+  // // 组件更新后执行
+  // componentDidUpdate () {
+  //   console.log('componentDidUpdate: 组件更新完毕')
+  // }
+  // // 接收到props执行
+  // UNSAFE_componentWillReceiveProps  () {
+  //   console.log('componentWillReceiveProps:接收到props执行')
+  // }
   render () {
     console.log('parent render函数')
     return (
