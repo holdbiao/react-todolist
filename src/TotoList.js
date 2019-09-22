@@ -7,13 +7,39 @@ class TodoList extends Component {
     super (props)
     this.state = {
       inputValue: 'hello',
-      list: ['学习react', '学习vue']
+      list: []
     }
     this.changeInput = this.changeInput.bind(this)
     this.handleClick = this.handleClick.bind(this)
     this.handleDel = this.handleDel.bind(this)
   }
+  // 在组件即将挂载前执行
+  UNSAFE_componentWillMount () { // 原叫componentWillMoun
+    console.log('componentWillMount：在组件即将挂载前执行')
+  }
+  // 组件挂载完后执行
+  componentDidMount () {
+    console.log('componentDidMount:组件挂载完后执行')
+  }
+  // 组件更新前执行
+  shouldComponentUpdate () {
+    console.log('shouldComponentUpdate: 组件更新前执行')
+    return true // 是否更新组件（=\=> componentWillUpdate =\=> render）
+  }
+  // shouldComponentUpdate 返回true才执行
+  UNSAFE_componentWillUpdate () {
+    console.log('componentWillUpdate')
+  }
+  // 组件更新后执行
+  componentDidUpdate () {
+    console.log('componentDidUpdate: 组件更新完毕')
+  }
+  // 接收到props执行
+  UNSAFE_componentWillReceiveProps  () {
+    console.log('componentWillReceiveProps:接收到props执行')
+  }
   render () {
+    console.log('parent render函数')
     return (
       <Fragment>
         <div>
@@ -27,7 +53,7 @@ class TodoList extends Component {
           <button
             onClick={this.handleClick}>提交</button>
         </div>
-        <ul>
+        <ul ref={ul => this.ul = ul}>
           {this.getTodoItem()}
           {/* {
             // this.state.list.map((item, index) => <li key={index} onClick={this.handleDel.bind(this, index)}>{item}</li>)
@@ -73,7 +99,11 @@ class TodoList extends Component {
     this.setState((preState) => ({
       list: [...preState.list, preState.inputValue],
       inputValue: ''
-    }))
+    }), () => {
+      // setState是伊布函数, 第二个参数等待setState执行完执行
+      console.log(this.ul.querySelectorAll('li').length) // setState是伊布函数，这里执行有先后顺序问题
+    })
+    // console.log(this.ul.querySelectorAll('li').length) // setState是伊布函数
     // this.setState({
     //   list: [...this.state.list, this.state.inputValue],
     //   inputValue: ''

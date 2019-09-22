@@ -6,7 +6,18 @@ class TodoItem extends Component {
     super(props)
     this.handleDel = this.handleDel.bind(this) // 节约性能
   }
+  // 一个组件要从父组件接收参数
+  // 只要父组件的render函数重新执行后执行此函数
+  // 如果这个组件第一次存在于父组件中，不执行
+  // 如果这个组件之前就存在于父组件中，执行
+  UNSAFE_componentWillReceiveProps  () {
+    console.log('componentWillReceiveProps: todoitem')
+  }
+  componentWillUnmount () {
+    console.log('componentWillUnmount: 组件卸载')
+  }
   render () {
+    console.log('child render函数')
     const { content } = this.props
     return (
       <li onClick={this.handleDel}>{content}</li>
@@ -20,7 +31,7 @@ class TodoItem extends Component {
 
 // 定义props数据类型
 TodoItem.propTypes = {
-  content: PropTypes.string.isRequired,
+  content: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   deleteItem: PropTypes.func,
   idx: PropTypes.number
 }
