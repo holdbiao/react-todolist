@@ -29,8 +29,8 @@ class AntdRedux extends Component {
                     header={<div>To do List</div>}
                     bordered
                     dataSource={this.state.list}
-                    renderItem={item => (
-                        <List.Item>{item}</List.Item>
+                    renderItem={(item, idx) => (
+                        <List.Item onClick={this.handleItemDel.bind(this, idx)}>{item}</List.Item>
                     )}
                 />
             </div>
@@ -44,12 +44,20 @@ class AntdRedux extends Component {
         store.dispatch(action)
     }
     handleStateChange () {
-        console.log('store change')
+        // console.log('store change')
         this.setState(store.getState())
     }
     handleButtonClick () {
         const action = {
             type: 'add_list_item'
+        }
+        store.dispatch(action)
+    }
+    handleItemDel (index) {
+        // console.log('del:', index)
+        const action = {
+            type: 'del_list_item',
+            value: index
         }
         store.dispatch(action)
     }
