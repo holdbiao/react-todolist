@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import AntdRedux from './AntdRedux'
+// import App from './App';
 // import Todolist from './TotoList';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<AntdRedux />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
