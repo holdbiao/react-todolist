@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import TodoItem from './TodoItem'
 import './TodoList.css'
-import axios from 'axios'
+// import axios from 'axios'
 
 class TodoList extends Component {
   constructor (props) {
