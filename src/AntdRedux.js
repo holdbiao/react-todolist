@@ -11,6 +11,7 @@ class AntdRedux extends Component {
         this.handleButtonClick = this.handleButtonClick.bind(this)
         this.handleItemDel = this.handleItemDel.bind(this)
         this.handleStateChange = this.handleStateChange.bind(this)
+        // 订阅store
         store.subscribe(this.handleStateChange)
     }
     render () {
