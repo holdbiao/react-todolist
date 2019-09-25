@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import 'antd/dist/antd.css'
 import store from './store'
 import AntdReduxUI from './AntdReduxUI'
+import { getTodoList } from './store/actionCreator.js'
 
 class AntdRedux extends Component {
     constructor (props) {
@@ -24,6 +25,11 @@ class AntdRedux extends Component {
                 handleItemDel={this.handleItemDel}
                 ></AntdReduxUI>
         )
+    }
+    componentDidMount () {
+        // 调用中间件的异步请求
+        const action = getTodoList()
+        store.dispatch(action)
     }
     handleInput (evt) {
         const action = {

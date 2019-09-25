@@ -1,3 +1,5 @@
+import { INIT_LIST_ACTION } from './actionTypes'
+
 const defaultState = {
     inputValue: '',
     list: ['1', '2']
@@ -20,7 +22,13 @@ export default (state = defaultState, action) => {
     if (action.type === 'del_list_item') {
         // console.log(action.value, state)
         const newState = {...state}
-         newState.list.splice(action.value, 1)
+        newState.list.splice(action.value, 1)
+        return newState
+    }
+    if (action.type === INIT_LIST_ACTION) {
+        // 使用redux-thunk异步获取的数据
+        const newState = {...state}
+        newState.list = action.data
         return newState
     }
 
